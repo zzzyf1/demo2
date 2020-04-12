@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DriveMapper">
+    <resultMap id="DriverResultMap" type="com.example.mapper.DriveMapper">
+        <result column="driver_id" jdbcType="VARCHAR" property="driver_id"/>
+        <result column="driver_name" jdbcType="VARCHAR" property="driver_name"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+    <select id="selectAllDriverByCity" resultType="com.example.entity.driver">
+        select distinct driver_id,driver_name,phone,city,description from driver natural join driver_route natural join route_des
+    </select>
+    <select id="selectDrivers" resultType="com.example.entity.driver">
+        select * from driver where city = #{city}
+    </select>
+</mapper>

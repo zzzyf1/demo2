@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RouteDescriptionMapper">
+    <resultMap id="RouteDescriptionResultMap" type="com.example.mapper.RouteDescriptionMapper">
+        <result column="route_id" jdbcType="INTEGER" property="route_id"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+    <insert id="AddRouteDescription">
+        insert into route_des (description) values(#{description});
+    </insert>
+    <select id="selectRouteByDes" resultType="com.example.entity.routeDescription">
+        select * from route_des where description=#{description};
+    </select>
+
+</mapper>

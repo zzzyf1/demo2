@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    #连接名字 随便起一个就行
+    name: test
+    #注意设置编码否则会导致参数含有中文的查询语句或插入数据为中文的语句异常 47.96.164.222
+    url: jdbc:mysql://localhost:3306/demotest?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: qwert
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #连接池配置
+    hikari:
+      max-lifetime: 30000 #单位ms
+      minimum-idle: 3
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.example.entity

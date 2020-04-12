@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DriverRoutemapper">
+    <resultMap id="BaseResultMap" type="com.example.mapper.DriverRoutemapper">
+        <result column="driver_id" jdbcType="VARCHAR" property="driver_id"/>
+        <result column="route_id" jdbcType="INTEGER" property="route_id"/>
+    </resultMap>
+    <insert id="insert">
+        insert into driver_route values(#{driver_id},#{route_id});
+    </insert>
+
+
+</mapper>

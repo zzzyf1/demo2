@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.StopMapper">
+    <resultMap id="StopResultMap" type="com.example.mapper.StopMapper">
+        <result column="station_id" jdbcType="INTEGER" property="station_id"/>
+        <result column="stop_name" jdbcType="VARCHAR" property="stop_name"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+    </resultMap>
+    <select id="Sel" resultType="com.example.entity.bus_stop">
+        select station_id,stop_name,latitude,longitude FROM bus_stop WHERE stop_name LIKE #{stop_name}
+    </select>
+    <select id="SelAll" resultType="com.example.entity.bus_stop">
+        select station_id,stop_name,latitude,longitude FROM bus_stop
+    </select>
+    <select id="SelExactly" resultType="com.example.entity.bus_stop">
+        select * FROM bus_stop where stop_name = #{stop_name} and latitude = #{latitude} and longitude = #{longitude}
+    </select>
+    <delete id="Del">
+        delete from bus_stop where station_id = #{station_id};
+    </delete>
+    <insert id="Add">
+        insert into bus_stop (stop_name,latitude,longitude) values (#{stop_name},#{latitude},#{longitude});
+    </insert>
+    <update id="Upd">
+        update bus_stop set stop_name = #{stop_name},latitude = #{latitude},longitude = #{longitude} where station_id = #{station_id};
+    </update>
+    <update id="UpdateQRLocation">
+         update bus_stop set qr_code_url = #{qr_code_url} where station_id = #{station_id};
+    </update>
+</mapper>

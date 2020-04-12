@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RouteMapper">
+    <resultMap id="route" type="com.example.mapper.RouteMapper">
+        <result column="station_id" jdbcType="INTEGER" property="station_id"/>
+        <result column="route_id" jdbcType="INTEGER" property="route_id"/>
+        <result column="position" jdbcType="INTEGER" property="position" />
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="stop_name" jdbcType="VARCHAR" property="stop_name"/>
+        <result column="qr_code_url" jdbcType="VARCHAR" property="qr_code_url"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+    </resultMap>
+    <select id="selectRouteByName" resultType="com.example.entity.route">
+        select * from route natural join route_des natural join bus_stop where description LIKE #{description}
+    </select>
+    <select id="selectRouteByStationID" resultType="com.example.entity.route">
+        select * from route natural join route_des natural join bus_stop where station_id = #{station_id};
+    </select>
+</mapper>
