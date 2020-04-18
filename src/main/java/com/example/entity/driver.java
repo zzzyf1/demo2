@@ -6,6 +6,8 @@ public class driver {
     private String driver_name;
     private String phone;
     private String city;
+    private String sex;
+    private String url;
 
     public String getDriver_name() {
         return driver_name;
@@ -45,5 +47,21 @@ public class driver {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -8,6 +8,4 @@
     <insert id="insert">
         insert into driver_route values(#{driver_id},#{route_id});
     </insert>
-
-
 </mapper>

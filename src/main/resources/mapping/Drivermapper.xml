@@ -7,11 +7,21 @@
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="city" jdbcType="VARCHAR" property="city"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
+        <!--resultMap 其实是不需要的，在查询语句中resultType指定映射对象即可-->
     </resultMap>
     <select id="selectAllDriverByCity" resultType="com.example.entity.driver">
         select distinct driver_id,driver_name,phone,city,description from driver natural join driver_route natural join route_des
     </select>
     <select id="selectDrivers" resultType="com.example.entity.driver">
-        select * from driver where city = #{city}
+        select * from driver
     </select>
+    <insert id="insertDriver">
+        insert into driver (driver_id,driver_name,phone,city,sex,url) values (#{driver_id},#{driver_name},#{phone},#{city},#{sex},#{url});
+    </insert>
+    <update id="refresh">
+         update driver set driver_name = #{driver_name},phone = #{phone},city = #{city},sex = #{sex} ,url = #{url} where driver_id = #{driver_id};
+    </update>
+    <delete id="deleteDriver">
+        delete from driver where driver_id = #{id};
+    </delete>
 </mapper>
