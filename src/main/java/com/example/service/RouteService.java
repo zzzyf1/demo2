@@ -20,5 +20,6 @@ public class RouteService {
     }
     //得到包含该站点的线路节点
     public List<route> selectRouteByStationID(int station_id){return routeMapper.selectRouteByStationID(station_id);}
+    public int deleteRoute(int id){return routeMapper.deleteRoute(id);}
 
 }

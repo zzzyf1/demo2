@@ -17,4 +17,7 @@
     <select id="selectRouteByStationID" resultType="com.example.entity.route">
         select * from route natural join route_des natural join bus_stop where station_id = #{station_id};
     </select>
+    <delete id="deleteRoute">
+        delete from route_des where route_id = #{id}
+    </delete>
 </mapper>

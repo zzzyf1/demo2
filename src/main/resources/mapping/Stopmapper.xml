@@ -20,10 +20,10 @@
         delete from bus_stop where station_id = #{station_id};
     </delete>
     <insert id="Add">
-        insert into bus_stop (stop_name,latitude,longitude) values (#{stop_name},#{latitude},#{longitude});
+        insert into bus_stop (stop_name,latitude,longitude,street) values (#{stop_name},#{latitude},#{longitude},#{street});
     </insert>
     <update id="Upd">
-        update bus_stop set stop_name = #{stop_name},latitude = #{latitude},longitude = #{longitude} where station_id = #{station_id};
+        update bus_stop set stop_name = #{stop_name},latitude = #{latitude},longitude = #{longitude},street = #{street} where station_id = #{station_id};
     </update>
     <update id="UpdateQRLocation">
          update bus_stop set qr_code_url = #{qr_code_url} where station_id = #{station_id};

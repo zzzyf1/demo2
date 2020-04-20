@@ -49,13 +49,13 @@ public class stopController {
     @PostMapping("/AddStop")
     @ResponseBody
     public int addStop(@RequestBody bus_stop busStop){
-        int result=stopService.Add(busStop.getStop_name(),busStop.getLatitude(),busStop.getLongitude());
+        int result=stopService.Add(busStop.getStop_name(),busStop.getLatitude(),busStop.getLongitude(),busStop.getStreet());
         if(result>0){
             bus_stop stop;
             stop=stopService.SelExactly(busStop);//查询生成的bus_stop的ID,用以生成对应放入二维码
             try{
                 //String filePath="E:/myVueDemo/src/assets/";
-                String filePath="src/main/resources/static/static/img/";
+                String filePath="src/main/resources/static/static/img/driver/";
                 filePath=filePath+"stop_"+Integer.toString(stop.getStation_id())+".jpg";
                 QRutil.encode(Integer.toString(stop.getStation_id()),filePath);
                 //将对应的二维码地址存储到数据库中
@@ -85,7 +85,7 @@ public class stopController {
     @PostMapping("/UpdStop")
     @ResponseBody
     public int updateStop(@RequestBody bus_stop busStop){
-        int result=stopService.Upd(busStop.getStation_id(),busStop.getStop_name(),busStop.getLatitude(),busStop.getLongitude());
+        int result=stopService.Upd(busStop.getStation_id(),busStop.getStop_name(),busStop.getLatitude(),busStop.getLongitude(),busStop.getStreet());
         if(result>0){
             System.out.println("成功更新站点");
         }else{

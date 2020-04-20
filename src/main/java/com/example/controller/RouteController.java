@@ -26,4 +26,22 @@ public class RouteController {
         }
         return list;
     }
+    @PostMapping("/deleteRoute")
+    @ResponseBody
+    public String deleteRoute(@RequestBody int id){
+        try{
+            int result=routeService.deleteRoute(id);
+            if(result>0){
+                System.out.println("线路"+id+"已删除");
+                return "1";
+            }else{
+                System.out.println("线路"+id+"删除失败");
+                return "0";
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "2";
+        }
+    }
 }

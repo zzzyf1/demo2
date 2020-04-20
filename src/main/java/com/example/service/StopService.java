@@ -19,8 +19,8 @@ public class StopService {
     }
     public bus_stop SelExactly(bus_stop busStop){return stopMapper.SelExactly(busStop);}
     public int Del(int station_id){ return stopMapper.Del(station_id);}
-    public int Upd(int station_id ,String stop_name,double latitude,double longitude){return stopMapper.Upd(station_id,stop_name,latitude,longitude);}
-    public int Add(String stop_name,double latitude,double longitude){
-        return stopMapper.Add(stop_name,latitude,longitude);}
+    public int Upd(int station_id ,String stop_name,double latitude,double longitude,String street){return stopMapper.Upd(station_id,stop_name,latitude,longitude,street);}
+    public int Add(String stop_name,double latitude,double longitude,String street){
+        return stopMapper.Add(stop_name,latitude,longitude,street);}
     public int UpdateQRLocation(bus_stop busStop){return stopMapper.UpdateQRLocation(busStop);}
 }

@@ -6,6 +6,15 @@ public class bus_stop {
     private String qr_code_url;
     private double latitude;
     private double longitude;
+    private String street; //街道
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
     public int getStation_id() {
         return station_id;
